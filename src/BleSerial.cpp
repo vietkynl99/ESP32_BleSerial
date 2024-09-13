@@ -9,15 +9,11 @@ bool BleSerial::connected()
 void BleSerial::onConnect(BLEServer *pServer)
 {
 	bleConnected = true;
-	if (enableLed)
-		digitalWrite(ledPin, HIGH);
 }
 
 void BleSerial::onDisconnect(BLEServer *pServer)
 {
 	bleConnected = false;
-	if (enableLed)
-		digitalWrite(ledPin, LOW);
 	Server->startAdvertising();
 }
 
@@ -129,16 +125,8 @@ void BleSerial::flush()
 	TxCharacteristic->notify(true);
 }
 
-void BleSerial::begin(const char *name, bool enable_led, int led_pin)
+void BleSerial::begin(const char *name)
 {
-	enableLed = enable_led;
-	ledPin = led_pin;
-
-	if (enableLed)
-	{
-		pinMode(ledPin, OUTPUT);
-	}
-
 	ConnectedDeviceCount = 0;
 	BLEDevice::init(name);
 

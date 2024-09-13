@@ -17,7 +17,7 @@ class BleSerial : public BLECharacteristicCallbacks, public BLEServerCallbacks, 
 public:
 	BleSerial();
 
-	void begin(const char *name, bool enable_led = false, int led_pin = 13);
+	void begin(const char *name);
 	void end();
 	void onWrite(BLECharacteristic *pCharacteristic);
 	int available();
@@ -44,9 +44,6 @@ public:
 	//Serial Characteristics
 	BLECharacteristic *TxCharacteristic;
 	BLECharacteristic *RxCharacteristic;
-
-	bool enableLed = false;
-	int ledPin = 13;
 protected:
 	size_t transmitBufferLength;
 	bool bleConnected;
