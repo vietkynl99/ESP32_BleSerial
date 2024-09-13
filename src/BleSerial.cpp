@@ -184,7 +184,7 @@ void BleSerial::SetupSerialService()
 		BLE_TX_UUID, BLECharacteristic::PROPERTY_NOTIFY);
 
 	TxCharacteristic->setAccessPermissions(ESP_GATT_PERM_READ_ENCRYPTED);
-	RxCharacteristic->setAccessPermissions(ESP_GATT_PERM_WRITE_ENCRYPTED);
+	// RxCharacteristic->setAccessPermissions(ESP_GATT_PERM_WRITE_ENCRYPTED);
 
 	TxCharacteristic->addDescriptor(new BLE2902());
 	RxCharacteristic->addDescriptor(new BLE2902());
